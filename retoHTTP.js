@@ -1,9 +1,9 @@
  const http = require('http'); 
 
+ const server = http.createServer(function(request, response){
+
     let recibida = {ok: true, message: 'Recibido!'};
     let despedida = {ok:true, message: 'Adios!'};
-
- const server = http.createServer(function(request, response){
 
     console.log("Petición recibida del cliente")
     console.log("Header Request: " + request.headers["content-type"])

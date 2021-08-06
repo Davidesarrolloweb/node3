@@ -1,6 +1,7 @@
 
 const express = require ('express');
 const app = express();
+app.use(express.json());
 
 let recibida = {ok: true, message: 'Recibido!'};
 let despedida = {ok:true, message: 'Adios!'};
@@ -11,7 +12,7 @@ app.get("/", function(request, response){
     console.log(request.url);
     console.log(request.method);
     console.log(request.headers["user-agent"]); 
-    response.send(JSON.stringify(recibida));
+    response.status(200).send(recibida);
 })
 
 app.get("/bye", function(request, response){
@@ -20,7 +21,7 @@ app.get("/bye", function(request, response){
     console.log(request.url);
     console.log(request.method);
     console.log(request.headers["user-agent"]);
-    response.send(JSON.stringify(despedida));
+    response.status(200).send(despedida);
 })
 
 app.listen(4000);
